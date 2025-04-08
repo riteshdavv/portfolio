@@ -1,17 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { ThemeToggle } from "@/components/theme-toggle";
-import ContactForm from "@/app/components/contact-form";
 import ProjectCard from "@/app/components/project-card";
 import TechStack from "@/app/components/tech-stack";
 import Navbar from "@/app/components/Navbar";
-import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import type React from "react";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
@@ -96,17 +89,6 @@ export default function Page() {
               Tech Stack
             </h2>
             <TechStack />
-          </div>
-        </section>
-
-        <section id="contact" className="py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-            <div className="mx-auto max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                Get in Touch
-              </h2>
-              <ContactForm />
-            </div>
           </div>
         </section>
       </main>
