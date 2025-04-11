@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <ThemeToggle/>
             <Link
               href="#about"
               className="text-sm font-medium transition-colors hover:text-foreground/80"
@@ -64,6 +66,7 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t">
           <nav className="flex flex-col space-y-4 px-4 py-6">
+            <ThemeToggle/>
             <Link
               href="#about"
               className="text-base font-medium transition-colors hover:text-foreground/80"

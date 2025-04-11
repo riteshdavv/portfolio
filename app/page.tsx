@@ -51,7 +51,7 @@ export default function Page() {
 
         <section id="projects" className="py-8 md:py-16 lg:py-24 bg-muted/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-8 md:mb-12 text-center">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
               Projects
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -64,20 +64,21 @@ export default function Page() {
                 tags={["Next.js", "HuggingFace API","Meme Generation API (ImgFlip)"]}
               />
               <ProjectCard
-                title="Task Management App"
-                description="A real-time task management application with team collaboration features."
-                image="/placeholder.svg?height=400&width=600"
+                title="GitShamed"
+                description="An AI-powered Git Roast platform where users receive humorous roast-style reviews of their code."
+                image="/gitshamed.jpg"
                 link="https://github.com"
                 weblink="https://google.com"
-                tags={["React", "Node.js", "Socket.io"]}
+                tags={[ "Next.js", "Python (FastAPI)", "HuggingFace API", "GitHub API"]}
               />
               <ProjectCard
-                title="AI Chat Interface"
-                description="An AI-powered chat interface with natural language processing capabilities."
-                image="/placeholder.svg?height=400&width=600"
+                title="GitWrecked"
+                description="A GitHub analytics dashboard that transforms your contributions into
+                a gamified visual report."
+                image="/gitwrecked.jpg"
                 link="https://github.com"
                 weblink="https:google.com"
-                tags={["OpenAI", "Next.js", "TailwindCSS"]}
+                tags={["Next.js", "GitHub API", "Chart.js", "D3.js"]}
               />
             </div>
           </div>
