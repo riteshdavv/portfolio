@@ -67,8 +67,8 @@ export default function Page() {
                 title="GitShamed"
                 description="An AI-powered Git Roast platform where users receive humorous roast-style reviews of their code."
                 image="/gitshamed.jpg"
-                link="https://github.com"
-                weblink="https://google.com"
+                link="https://github.com/riteshdavv/gitshamed"
+                weblink="/"
                 tags={[ "Next.js", "Python (FastAPI)", "HuggingFace API", "GitHub API"]}
               />
               <ProjectCard
@@ -76,8 +76,8 @@ export default function Page() {
                 description="A GitHub analytics dashboard that transforms your contributions into
                 a gamified visual report."
                 image="/gitwrecked.jpg"
-                link="https://github.com"
-                weblink="https:google.com"
+                link="https://github.com/riteshdavv/gitbattle"
+                weblink="/"
                 tags={["Next.js", "GitHub API", "Chart.js", "D3.js"]}
               />
             </div>
