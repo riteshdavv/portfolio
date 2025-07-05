@@ -57,7 +57,7 @@ export default function Page() {
                     View My Projects
                   </Button>
                 </Link>
-                <div className="flex space-x-3">
+                <div className="flex space-x-3" id="contact">
                   <Link href="https://github.com/riteshdavv" target="_blank">
                     <Button variant="outline" size="icon" className="h-10 w-10">
                       <FaGithub className="h-5 w-5 scale-135" />
