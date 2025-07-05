@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link className="flex items-center space-x-2" href="/">
-            <span className="text-xl font-bold">Ritesh.dev</span>
+            <span className="text-xl font-bold">Ritesh</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,9 +42,15 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Button variant="outline" className="h-9">
-              Resume
-            </Button>
+            <Link
+              href="https://drive.google.com/file/d/1zLfYhXoay_71bOVj13Yf8EbmsQm1Ro3D/view?usp=sharing"
+              target="_blank"
+              className="text-sm font-medium transition-colors hover:text-foreground/80 hover:cursor-pointer"
+            >
+              <Button variant="outline" className="h-9 hover:cursor-pointer">
+                Resume
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -65,7 +71,7 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden border-t">
-          <nav className="flex flex-col space-y-4 px-4 py-6">
+          <nav className="flex flex-col items-center space-y-4 px-4 py-6">
             <ThemeToggle/>
             <Link
               href="#about"
@@ -88,9 +94,15 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Button variant="outline" className="w-full">
-              Resume
-            </Button>
+            <Link
+              href="https://drive.google.com/file/d/1zLfYhXoay_71bOVj13Yf8EbmsQm1Ro3D/view?usp=sharing"
+              target="_blank"
+              className="text-sm font-medium transition-colors hover:text-foreground/80 hover:cursor-pointer"
+            >
+              <Button variant="outline" className="h-9 hover:cursor-pointer">
+                Resume
+              </Button>
+            </Link>
           </nav>
         </div>
       )}

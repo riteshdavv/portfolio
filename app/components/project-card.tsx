@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, image, link, weblink, tags }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden border border-gray-100/30 hover:border-gray-50 flex flex-col">
+    <Card className="overflow-hidden border border-gray-100/30 hover:border-gray-50 flex flex-col shadow-lg dark:shadow-gray-600/25 hover:shadow-xl">
       <div className="-translate-y-3 scale-115 w-full h-[200px] relative">
         <Image
           src={image || "/placeholder.svg"}
@@ -29,11 +29,11 @@ export default function ProjectCard({ title, description, image, link, weblink, 
         <div>
           <h3 className="font-semibold text-xl mb-2">{title}</h3>
           <p className="text-sm text-muted-foreground mb-4">{description}</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10"
+                className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs  ring-1 ring-inset tracking-wide ring-gray-500/10 "
               >
                 {tag}
               </span>

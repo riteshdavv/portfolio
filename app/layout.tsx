@@ -8,9 +8,12 @@ import type React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ritesh.dev - Full Stack Developer",
+  title: "Ritesh Kumar Singh - GSoC'25 Contributor",
   description:
     "Portfolio website showcasing full stack development projects and skills",
+  icons: {
+    icon: '/logo.png'
+  },
 };
 
 export default function RootLayout({
