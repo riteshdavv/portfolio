@@ -17,9 +17,9 @@ export default function Page() {
 
       <main className="w-full">
         <section id="about" className="py-8 md:py-16 lg:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="container mx-auto px-2 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="flex flex-col justify-center items-center space-y-6 px-4">
+              <div className="flex flex-col justify-center items-center space-y-6 px-2">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden ">
                   <Image
                     src="/ritesh.png"
@@ -32,7 +32,7 @@ export default function Page() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                   Ritesh Kumar Singh
                 </h1>
-                <div className="flex flex-wrap justify-center gap-3">
+                <div className="flex flex-wrap justify-center gap-2">
                   <span className="px-3 py-1 text-gray-600 dark:text-gray-400 rounded-full text-sm border border-gray-500 ">
                     GSoC' 25 Contributor
                   </span>
