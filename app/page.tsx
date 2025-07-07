@@ -6,7 +6,7 @@ import "./globals.css";
 import type React from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
-import ExperienceSection from "./components/experience-section"
+import ExperienceSection from "./components/experience-section";
 import Image from "next/image";
 import ProjectSection from "./components/project-section";
 
@@ -43,18 +43,27 @@ export default function Page() {
                     Open Source Enthusiast
                   </span>
                 </div>
-                
+
                 <p className="text-justify mx-4 tracking-tight md:leading-relaxed text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-[725px]">
-                  I build intelligent web systems, <span className="text-gray-800 dark:text-white font-medium">open-source modules</span>, and AI-powered developer tools that scale.
-                  Currently contributing to the Appwrite Drupal Integration Module via <span className="text-orange-500/65 dark:text-orange-300 font-medium">Google Summer of Code 2025</span>.
+                  I build intelligent web systems,{" "}
+                  <span className="text-gray-800 dark:text-white font-medium">
+                    open-source modules
+                  </span>
+                  , and AI-powered developer tools that scale. Currently
+                  contributing to the Appwrite Drupal Integration Module via{" "}
+                  <span className="text-orange-500/65 dark:text-orange-300 font-medium">
+                    Google Summer of Code 2025
+                  </span>
+                  .
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-x-8 gap-y-4 pt-6">
-                <Link
-                  href="#projects"
-                  className=""
-                >
-                  <Button size="lg" className="bg-gray-800 transition-transform ease-in-out text-white dark:text-black dark:hover:bg-white dark:transition-transform dark:ease-in-out dark:bg-gray-100/90 hover:bg-black font-medium px-6 hover:cursor-pointer">
+                <Link href="#projects" className="">
+                  <Button
+                    size="lg"
+                    variant="default"
+                    className="font-medium px-6 hover:cursor-pointer"
+                  >
                     View My Projects
                   </Button>
                 </Link>
@@ -65,7 +74,10 @@ export default function Page() {
                       <span className="sr-only">GitHub</span>
                     </Button>
                   </Link>
-                  <Link href="https://linkedin.com/in/riteshdavv/" target="_blank">
+                  <Link
+                    href="https://linkedin.com/in/riteshdavv/"
+                    target="_blank"
+                  >
                     <Button variant="outline" size="icon" className="h-10 w-10">
                       <FaLinkedinIn className="h-5 w-5 scale-125" />
                       <span className="sr-only">LinkedIn</span>
@@ -79,7 +91,6 @@ export default function Page() {
                   </Link>
                 </div>
               </div>
-              
             </div>
           </div>
         </section>
@@ -93,7 +104,7 @@ export default function Page() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
               Projects
             </h2>
-            <ProjectSection/>
+            <ProjectSection />
           </div>
         </section>
 
