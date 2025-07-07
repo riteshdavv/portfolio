@@ -168,7 +168,7 @@ export default function ElysiumPage() {
                     >
                       {feature.title}
                     </h3>
-                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    <p className="text-[12.5px] md:text-base text-neutral-600 dark:text-neutral-500 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
