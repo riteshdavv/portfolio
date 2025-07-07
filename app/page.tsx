@@ -8,6 +8,7 @@ import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import ExperienceSection from "./components/experience-section"
 import Image from "next/image";
+import ProjectSection from "./components/project-section";
 
 export default function Page() {
   return (
@@ -57,7 +58,7 @@ export default function Page() {
                     View My Projects
                   </Button>
                 </Link>
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 justify-center">
                   <Link href="https://github.com/riteshdavv" target="_blank">
                     <Button variant="outline" size="icon" className="h-10 w-10">
                       <FaGithub className="h-5 w-5 scale-135" />
@@ -92,33 +93,7 @@ export default function Page() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
               Projects
             </h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <ProjectCard
-                title="BuggedIRL"
-                description="An AI-powered bug-to-meme generator that turns frustrating errors into shareable comic relief."
-                image="/buggedirl.png"
-                link="https://github.com/riteshdavv/buggedirl"
-                weblink="https://bugged-irl.vercel.app"
-                tags={["Next.js", "HuggingFace API","Meme Generation API (ImgFlip)"]}
-              />
-              <ProjectCard
-                title="GitShamed"
-                description="An AI-powered Roast platform where users receive humorous roast-style reviews of their code."
-                image="/gitshamed.jpg"
-                link="https://github.com/riteshdavv/gitshamed"
-                weblink="/"
-                tags={[ "Next.js", "Python (FastAPI)", "HuggingFace API", "GitHub API"]}
-              />
-              <ProjectCard
-                title="GitWrecked"
-                description="A GitHub analytics dashboard that transforms your contributions into
-                a gamified visual report."
-                image="/gitwrecked.jpg"
-                link="https://github.com/riteshdavv/gitbattle"
-                weblink="/"
-                tags={["Next.js", "GitHub API", "Chart.js", "D3.js"]}
-              />
-            </div>
+            <ProjectSection/>
           </div>
         </section>
 

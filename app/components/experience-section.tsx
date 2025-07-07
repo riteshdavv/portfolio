@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CalendarDays, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FaGithub, FaGlobe, FaLink } from "react-icons/fa";
+import { FaFile, FaFolder, FaFolderOpen, FaGithub, FaGlobe, FaLink } from "react-icons/fa";
 
 const experiences = [
   {
@@ -32,7 +32,7 @@ const experiences = [
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-12 md:py-24 lg:py-32 bg-muted/50">
+    <section id="experience" className="py-8 md:py-16 lg:py-24 bg-muted/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
@@ -119,23 +119,47 @@ export default function ExperienceSection() {
                         ))}
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between gap-x-8 gap-y-4 mx-8">
+                    <div className="flex flex-col gap-4 mx-8">
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <Link
+                          href="https://github.com/riteshdavv/drupal-appwrite"
+                          target="_blank"
+                          className="flex-1"
+                        >
+                          <Button
+                            variant="outline"
+                            className="w-full flex justify-center items-center gap-2"
+                          >
+                            View on GitHub
+                            <FaGithub className="scale-115" />
+                          </Button>
+                        </Link>
+
+                        <Link
+                          href="https://summerofcode.withgoogle.com/programs/2025/projects/5QrB2MPf"
+                          target="_blank"
+                          className="flex-1"
+                        >
+                          <Button
+                            variant="outline"
+                            className="w-full flex justify-center items-center gap-2"
+                          >
+                            Visit the Site
+                            <FaGlobe className="w-4" />
+                          </Button>
+                        </Link>
+                      </div>
+
                       <Link
-                        href="https://github.com/riteshdavv/drupal-appwrite"
+                        href="https://docs.google.com/document/d/1M8hOkZW0Zd3uu_ptFqM1yN_fEYuN0x2Mch_EDNQ4Ims/edit?usp=sharing"
                         target="_blank"
-                        className="flex-1"
                       >
-                        <Button variant="outline" className="w-full">
-                          View on GitHub &nbsp; <FaGithub className="w-4 h-4 scale-115"/>
-                        </Button>
-                      </Link>
-                      <Link
-                        href="https://summerofcode.withgoogle.com/programs/2025/projects/5QrB2MPf"
-                        target="_blank"
-                        className="flex-1"
-                      >
-                        <Button variant="outline" className="w-full">
-                          Visit the Site &nbsp; <FaGlobe className="w-4 h-4 scale-115"/>
+                        <Button
+                          variant="outline"
+                          className="w-full flex justify-center items-center gap-2"
+                        >
+                          View the Module
+                          <FaFolder className="scale-105" />
                         </Button>
                       </Link>
                     </div>

@@ -15,12 +15,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, image, link, weblink, tags }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden border border-gray-100/30 hover:border-gray-50 flex flex-col shadow-lg dark:shadow-gray-600/25 hover:shadow-xl">
-      <div className="-translate-y-3 scale-115 w-full h-[200px] relative">
+      <div className="-translate-y-3 scale-115 w-full h-[200px] relative overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-cover rounded-t-lg transition-transform hover:scale-105"
+          className="object-cover rounded-t-lg transition-transform hover:scale-108"
         />
       </div>
       
