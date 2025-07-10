@@ -46,8 +46,12 @@ export default function ElysiumPage() {
             <span className="underline decoration-1 decoration-gray-400 underline-offset-7">
               detecting user intent
             </span>
-            , organizing workflows, and launching context-aware environments.
-            Built to eliminate setup fatigue and maximize flow.
+            , organizing workflows, and launching{" "}
+            <span className="underline decoration-1 decoration-gray-400 underline-offset-7">
+              context-aware environments
+            </span>
+            . Built to eliminate setup fatigue and
+            maximize flow.
           </p>
           <div className="mt-8 flex justify-center">
             <Link href="https://github.com/riteshdavv/elysium">
