@@ -19,7 +19,7 @@ const projects = [
     ],
   },
   {
-    title: "Cerebral | AI Automation Assistant",
+    title: "Cerebral | Automation Assistant",
     description:
       "An AI assistant that automates multi-app workspace setup, intelligently detects developer intent, identifies productivity barriers and organizes workflows based on user needs.",
     image: "/cerebral.jpg",
