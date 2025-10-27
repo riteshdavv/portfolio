@@ -95,7 +95,7 @@ export default function Navbar() {
               Contact
             </Link>
             <Link
-              href="https://drive.google.com/file/d/1zLfYhXoay_71bOVj13Yf8EbmsQm1Ro3D/view?usp=sharing"
+              href="https://drive.google.com/file/d/1m0JCbSYirb8Kp7MWdfQ25BdX4tydvzum/view?usp=sharing"
               target="_blank"
               className="text-sm font-medium transition-colors hover:text-foreground/80 hover:cursor-pointer"
             >
