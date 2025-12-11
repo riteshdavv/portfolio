@@ -55,6 +55,47 @@ html {
 }
 
 :root {
+  /* Aurora background required colors */
+  --white: #ffffff;
+  --black: #000000;
+  --transparent: transparent;
+
+  /* Blue shades */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+
+  /* Indigo shades */
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+
+  /* Violet shades */
+  --violet-50: #f5f3ff;
+  --violet-100: #ede9fe;
+  --violet-200: #ddd6fe;
+  --violet-300: #c4b5fd;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --violet-800: #5b21b6;
+  --violet-900: #4c1d95;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -127,8 +168,23 @@ html {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground font-sans;
   }
 }
 
+/* Aurora animation keyframes */
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.animate-aurora {
+  animation: aurora 60s linear infinite;
+}

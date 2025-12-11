@@ -1,13 +1,23 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display, Poppins, Instrument_Serif } from 'next/font/google'
 import "./globals.css";
 import type React from "react";
 
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+})
+const instrument = Instrument_Serif({ 
+  subsets: ['latin'], 
+  variable: '--font-instrument-serif',
+  weight: ['400']
+})
 
 export const metadata: Metadata = {
   title: "Ritesh Kumar Singh - GSoC'25 Contributor",
@@ -24,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable} ${poppins.variable} ${instrument.variable}`}>
       <head>
         <meta
           name="viewport"
@@ -34,7 +44,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          inter.className
+          poppins.className
         )}
       >
         <ThemeProvider

@@ -159,7 +159,7 @@ export default function ElysiumPage() {
                   style={{ animationDelay: `${2.0 + index * 0.1}s` }}
                 >
                   <div className="h-full border-r-2 dark:border-r-neutral-600 border-r-neutral-300 px-4 flex flex-col items-center justify-center">
-                    <FaChartSimple className="h-10 w-10 scale-105"/>
+                    <FaChartSimple className="h-10 w-10 scale-105" />
                   </div>
                   <div className="pr-2 pl-6">
                     <h3
