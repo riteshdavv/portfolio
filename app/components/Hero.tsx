@@ -3,10 +3,26 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Button } from "@/components/ui/button";
+import { Inter, Playfair_Display, Poppins, Instrument_Serif } from 'next/font/google'
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+})
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+  weight: ['400']
+})
 
 export default function Hero() {
   return (
@@ -24,8 +40,8 @@ export default function Hero() {
         <section id="about" className="">
           <div className="container mx-auto px-2 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="flex flex-col justify-center items-center space-y-6 px-2">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden ">
+              <div className="flex flex-col justify-center items-center space-y-6 px-2 cursor-default">
+                {/*<div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden ">
                   <Image
                     src="/ritesh.png"
                     alt="Ritesh Kumar Singh"
@@ -34,10 +50,7 @@ export default function Hero() {
                     className="w-full h-full object-cover scale-135 hover:scale-148 transition-transform ease-in-out"
                   />
                 </div>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
-                  Ritesh Kumar Singh
-                </h1>
-                <div className="flex flex-wrap justify-center gap-2">
+                 <div className="flex flex-wrap justify-center gap-2">
                   <span className="px-3 py-1 text-gray-600 dark:text-gray-300 rounded-full text-sm border border-gray-500 ">
                     GSoC' 25 Contributor
                   </span>
@@ -47,30 +60,31 @@ export default function Hero() {
                   <span className="px-3 py-1 text-gray-500 dark:text-gray-300 rounded-full text-sm border border-gray-500">
                     Open Source Enthusiast
                   </span>
-                </div>
+                </div> */}
 
-                <p className="text-justify mx-4 tracking-tight md:leading-relaxed text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-300 max-w-[725px]">
+                <h1 className={cn("text-center tracking-tight text-3xl sm:text-5xl md:text-[4rem] text-gray-500 dark:text-gray-300 py-2", instrument.className)}>
                   I build intelligent web systems,{" "}
+                  <br />
                   <span className="text-gray-800 dark:text-white font-medium">
-                    open-source modules
+                    and scalable{" "}
                   </span>
-                  , and AI-powered developer tools that scale. Currently
-                  contributing to the Appwrite Drupal Integration Module via{" "}
-                  <span className="text-orange-500/65 dark:text-orange-300 font-medium">
-                    Google Summer of Code 2025
+                  <span className="bg-gradient-to-r from-gray-800 to-gray-800 dark:from-[#ffcfa5] dark:to-[#bd925d] bg-clip-text text-transparent font-medium italic">
+                    open-source modules.
                   </span>
-                  .
-                </p>
+                </h1>
+                <h3 className={cn("tracking-tight text-base sm:text-xl md:text-[1.5rem] text-gray-500 dark:text-gray-300 font-medium flex py-2 items-center", poppins.className)}>
+                  I'm Ritesh Kumar Singh, &nbsp;
+                  <span className="text-gray-800 dark:text-white font-medium overflow-hidden rounded-full">
+                    <Image src="/ritesh.png" alt="Ritesh Kumar Singh" width={128} height={128} className="w-18 h-10 object-cover scale-130 hover: transition-transform ease-in-out -translate-y-0.5 translate-x-[1.25px]" />
+                  </span> &nbsp;
+                  <span className="bg-gradient-to-r from-gray-800 to-gray-800 dark:from-[#ffd0b7] dark:to-[#ffbb67] bg-clip-text text-transparent font-medium">
+                    a GSoC'25 Contributor.
+                  </span>
+                </h3>
               </div>
               <div className="flex flex-col sm:flex-row gap-x-8 gap-y-4 pt-6">
                 <Link href="#projects" className="">
-                  <Button
-                    size="lg"
-                    variant="default"
-                    className="font-medium px-6 hover:cursor-pointer"
-                  >
-                    View My Projects
-                  </Button>
+                  <InteractiveHoverButton text="View My Projects"/>
                 </Link>
                 <div className="flex space-x-4 justify-center">
                   <Link href="https://github.com/riteshdavv" target="_blank">

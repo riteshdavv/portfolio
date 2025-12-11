@@ -1,7 +1,28 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @tailwind utilities;
+
+@layer components {
+  /* Define the class used in your component */
+  .gradient-button {
+    background: linear-gradient(90deg, #00f2ff 0%, #ec4899 100%); /* Neon Blue to Pink */
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-button:hover {
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.5); /* Pink glow on hover */
+    transform: translateY(-1px);
+    opacity: 0.95;
+  }
+
+  /* Define the variant if you use it */
+  .gradient-button-variant {
+    background: linear-gradient(90deg, #2e0f46 0%, #050505 100%);
+    border: 1px solid #1E1E1E;
+  }
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -187,4 +208,55 @@ html {
 
 .animate-aurora {
   animation: aurora 60s linear infinite;
+}
+
+/* Gradient Button Styles */
+/* Gradient Button Styles */
+.gradient-button {
+  position: relative;
+  background: #1a1a1a;
+  border: 1px solid transparent;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+  isolation: isolate;
+}
+
+.gradient-button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 13px;
+  padding: 2px;
+  background: linear-gradient(45deg, #9FB4D3, #A69C93, #8C6D48, #9FB4D3);
+  background-size: 200% 200%;
+  animation: gradient-rotate 3s ease infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.gradient-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(166, 156, 147, 0.5);
+}
+
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
