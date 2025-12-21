@@ -188,20 +188,20 @@ export function FeatureShowcase({
                     >
                         <Tabs defaultValue={initial} className="relative h-full w-full">
                             {/* Absolute-fill media container */}
-                            <div className="relative h-full w-full">
+                            <div className="relative h-full w-full bg-[url(/gsoc-background.jpg)] bg-cover">
                                 {tabs.map((t, idx) => (
                                     <TabsContent
                                         key={t.value}
                                         value={t.value}
                                         className={cn(
                                             "absolute inset-0 m-0 h-full w-full",
-                                            "data-[state=inactive]:hidden"
+                                            "data-[state=inactive]:hidden flex flex-col items-center justify-center"
                                         )}
                                     >
                                         <img
                                             src={t.src}
                                             alt={t.alt ?? t.label}
-                                            className="h-full w-full object-cover"
+                                            className="object-cover"
                                             loading={idx === 0 ? "eager" : "lazy"}
                                         />
                                     </TabsContent>

@@ -8,22 +8,22 @@ import { motion } from "framer-motion";
 export default function Page() {
     const tabs: TabMedia[] = [
         {
-            value: "apparel",
-            label: "Apparel",
-            src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/t-shirt-mockup.png",
-            alt: "Apparel mockup",
+            value: "authentication",
+            label: "Authentication",
+            src: "auth.png",
+            alt: "Authentication",
         },
         {
-            value: "screen",
-            label: "Screen",
-            src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/screen-website-template.png",
-            alt: "Website template on screen",
+            value: "storage",
+            label: "File Storage",
+            src: "storage.png",
+            alt: "File Storage",
         },
         {
-            value: "abstract",
-            label: "Abstract",
-            src: "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/abstract-bg_11zon.jpg",
-            alt: "Abstract background",
+            value: "database",
+            label: "Database APIs",
+            src: "database.png",
+            alt: "Database APIs",
         },
     ];
 
@@ -71,7 +71,7 @@ export default function Page() {
                     },
                 ]}
                 tabs={tabs}
-                defaultTab="screen"
+                defaultTab="authentication"
                 panelMinHeight={720}
             />
         </motion.div>
