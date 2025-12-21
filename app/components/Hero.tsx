@@ -10,6 +10,7 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Button } from "@/components/ui/button";
 import { Inter, Playfair_Display, Poppins, Instrument_Serif } from 'next/font/google'
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { ElysiumBadge } from "@/components/ui/elysium-badge";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
@@ -35,33 +36,13 @@ export default function Hero() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4"
+        className="relative flex flex-col gap-6 items-center justify-center px-4"
       >
         <section id="about" className="">
-          <div className="container mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="container mx-auto px-2 sm:px-6 lg:px-8 space-y-8">
+            <ElysiumBadge/>
+            <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <div className="flex flex-col justify-center items-center space-y-6 px-2 cursor-default">
-                {/*<div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden ">
-                  <Image
-                    src="/ritesh.png"
-                    alt="Ritesh Kumar Singh"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover scale-135 hover:scale-148 transition-transform ease-in-out"
-                  />
-                </div>
-                 <div className="flex flex-wrap justify-center gap-2">
-                  <span className="px-3 py-1 text-gray-600 dark:text-gray-300 rounded-full text-sm border border-gray-500 ">
-                    GSoC' 25 Contributor
-                  </span>
-                  <span className="px-3 py-1 text-gray-500 dark:text-gray-300 rounded-full text-sm border border-gray-500">
-                    Full Stack Developer
-                  </span>
-                  <span className="px-3 py-1 text-gray-500 dark:text-gray-300 rounded-full text-sm border border-gray-500">
-                    Open Source Enthusiast
-                  </span>
-                </div> */}
-
                 <h1 className={cn("text-center tracking-tight text-3xl sm:text-5xl md:text-[4rem] text-gray-500 dark:text-gray-300 py-2", instrument.className)}>
                   I build intelligent web systems,{" "}
                   <br />
@@ -74,13 +55,14 @@ export default function Hero() {
                 </h1>
                 <h3 className={cn("tracking-tight text-base sm:text-xl md:text-[1.5rem] text-gray-500 dark:text-gray-300 font-medium flex py-2 items-center", poppins.className)}>
                   I'm Ritesh Kumar Singh, &nbsp;
-                  <span className="text-gray-800 dark:text-white font-medium overflow-hidden rounded-full">
+                  <span className="mx-2 text-gray-800 dark:text-white font-medium overflow-hidden rounded-full">
                     <Image src="/ritesh.png" alt="Ritesh Kumar Singh" width={128} height={128} className="w-18 h-10 object-cover scale-130 hover: transition-transform ease-in-out -translate-y-0.5 translate-x-[1.25px]" />
                   </span> &nbsp;
                   <span className="bg-gradient-to-r from-gray-800 to-gray-800 dark:from-[#ffd0b7] dark:to-[#ffbb67] bg-clip-text text-transparent font-medium">
                     a GSoC'25 Contributor.
                   </span>
                 </h3>
+                
               </div>
               <div className="flex flex-col sm:flex-row gap-x-8 gap-y-4 pt-6">
                 <Link href="#projects" className="">

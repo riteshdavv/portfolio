@@ -6,11 +6,12 @@ import "./globals.css";
 import type React from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
-import ExperienceSection from "./components/experience-section";
 import Image from "next/image";
 import ProjectSection from "./components/project-section";
 import { Timeline } from "./components/projects";
 import Hero from "./components/Hero";
+import GSoCSection from "./components/GSoCSection";
+import TimeLine_01 from "@/components/ui/projects-timeline";
 
 export default function Page() {
   return (
@@ -23,7 +24,7 @@ export default function Page() {
         </section>
 
         <section>
-          <ExperienceSection />
+          <GSoCSection />
         </section>
 
         <section id="projects" className="py-8 md:py-16 lg:py-24">
