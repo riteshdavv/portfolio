@@ -1,14 +1,22 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Package, Calendar, Sparkles, Zap } from "lucide-react";
+import { ArrowUpRight, Package, Calendar, Zap, Github, Brain, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Instrument_Serif } from "next/font/google";
 import {
+    SiRust,
+    SiTauri,
+    SiOllama,
     SiNextdotjs,
     SiReact,
+    SiDocker,
     SiTypescript,
     SiTailwindcss,
+    SiGooglechrome,
     SiFramer,
     SiPrisma,
     SiPostgresql,
@@ -19,7 +27,16 @@ import {
     SiFigma,
     SiVercel,
     SiShadcnui,
+    SiHuggingface
 } from "react-icons/si";
+
+import { TbApi } from "react-icons/tb";
+
+const instrument = Instrument_Serif({
+    subsets: ['latin'],
+    variable: '--font-instrument-serif',
+    weight: ['400']
+})
 
 // Technology type definition
 export type Technology = {
@@ -29,10 +46,16 @@ export type Technology = {
 
 // Predefined technologies map
 const TECHNOLOGIES: Record<string, Technology> = {
+    rust: { name: "RUST", icon: SiRust },
+    tauri: { name: "TAURI", icon: SiTauri },
+    ollama: { name: "OLLAMA", icon: SiOllama },
+    docker: { name: "DOCKER", icon: SiDocker },
     nextjs: { name: "NEXT.JS", icon: SiNextdotjs },
     react: { name: "REACT", icon: SiReact },
     typescript: { name: "TYPESCRIPT", icon: SiTypescript },
     tailwind: { name: "TAILWIND CSS", icon: SiTailwindcss },
+    api: { name: "OS LEVEL API", icon: TbApi },
+    chrome: { name: "CHROME EXTENSION", icon: SiGooglechrome },
     framer: { name: "MOTION.DEV", icon: SiFramer },
     prisma: { name: "PRISMA", icon: SiPrisma },
     postgres: { name: "POSTGRESQL", icon: SiPostgresql },
@@ -43,71 +66,70 @@ const TECHNOLOGIES: Record<string, Technology> = {
     figma: { name: "FIGMA", icon: SiFigma },
     vercel: { name: "VERCEL", icon: SiVercel },
     shadcn: { name: "SHADCN/UI", icon: SiShadcnui },
+    huggingface: { name: "HUGGINGFACE", icon: SiHuggingface },
+    image: { name: "IMGFLIP - MEME GENERATION API", icon: Image },
 };
 
-export type TimeLine_01Entry = {
-    icon: React.ComponentType<{ className?: string }>;
+export type ProjectEntry = {
+    icon: any;
     title: string;
     subtitle: string;
     description: string;
     items?: string[];
     image?: string;
     technologies?: string[]; // Array of technology keys
-    button?: {
-        url: string;
-        text: string;
-    };
+    projectUrl?: string;
+    githubUrl?: string;
 };
 
-export interface TimeLine_01Props {
+export interface ProjectProps {
     title?: string;
     description?: string;
-    entries?: TimeLine_01Entry[];
+    entries?: ProjectEntry[];
     className?: string;
 }
 
-export const defaultEntries: TimeLine_01Entry[] = [
+export const defaultEntries: ProjectEntry[] = [
     {
         icon: Package,
-        title: "Elysium | AI Reality Time Logger",
+        title: "Elysium - AI Reality Time Logger",
         subtitle: "Work In Progress • Dec 2025",
         description:
             "An AI-powered productivity tracker that logs keystrokes, app usage, and time spent; then compares it against your daily goals to generate behavioral insights.",
         items: [
-            "New Data Grid with sorting, filtering, and pagination",
-            "Kanban board with drag-and-drop support",
-            "Animated mega menu component",
-            "Masonry grid layout for galleries and portfolios",
-            "Extended accessibility support across all components",
+            "Improved user time-allocation by 40% via log analysis",
+            "95%+ accuracy tracking using native OS APIs",
+            "Robust data pipelines for session logging",
+            "Actionable insights mapping behavior to goals",
         ],
-        image: "/elysium.jpg",
-        technologies: ["nextjs", "react", "typescript", "tailwind", "prisma", "openai", "electron"],
-        button: {
-            url: "https://ruixenui.com",
-            text: "Explore Components",
-        },
+        image: "/elysium.png",
+        technologies: ["rust", "tauri", "python", "ollama", "openai", "postgres", "api", "nextjs", "react", "typescript", "prisma"],
+        projectUrl: "https://riteshsingh.vercel.app/elysium",
+        githubUrl: "https://github.com/riteshdavv/elysium",
     },
     {
-        icon: Sparkles,
-        title: "Cerebral | Automation Assistant",
+        icon: Brain,
+        title: "Cerebral - Automation Assistant",
         subtitle: "Work In Progress • Dec 2025",
         description:
             "An AI assistant that automates multi-app workspace setup, intelligently detects developer intent, identifies productivity barriers and organizes workflows based on user needs.",
         items: [
-            "Real-time theme preview in the dashboard",
-            "Customizable color palettes, typography, and spacing",
-            "Preset themes for quick project setup",
-            "Export tokens to CSS variables or JSON",
+            "Automated 20+ frequent development tasks",
+            "Reduced context-switching time by 60%",
+            "Automated multi-app workspace setup via scripts",
+            "85% accuracy intent-detection system",
         ],
-        image: "/cerebral.jpg",
-        technologies: ["python", "openai", "electron", "react", "typescript"],
+        image: "/cerebral.png",
+        technologies: ["rust", "tauri", "python", "chrome", "docker", "ollama", "openai", "api"],
+        projectUrl: "https://riteshsingh.vercel.app/cerebral",
+        githubUrl: "https://github.com/riteshdavv/cerebral",
     },
     {
         icon: Zap,
-        title: "Motion & Interaction Update",
-        subtitle: "Version 1.8.0 • Dec 2024",
+        title: "BuggedIRL - AI Bug to Meme",
+        subtitle: "Version 1.2.0 • Mar 2025",
         description:
-            "Micro-interactions across Ruixen UI have been enhanced with Framer Motion, delivering a smoother and more engaging user experience.",
+            "An AI-powered bug-to-meme generator that turns frustrating errors into shareable comic relief.",
         items: [
             "Animated dropdown menus and modals",
             "Smooth transitions between pages",
@@ -115,29 +137,11 @@ export const defaultEntries: TimeLine_01Entry[] = [
             "Reduced layout shift for better stability",
         ],
         image:
-            "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/dashboard-02.png",
-        technologies: ["react", "framer", "typescript", "tailwind"],
-    },
-    {
-        icon: Calendar,
-        title: "Initial Pro Release",
-        subtitle: "Version 1.5.0 • Oct 2024",
-        description:
-            "Ruixen UI Pro is here — a premium set of components, templates, and utilities designed for production-grade applications.",
-        items: [
-            "Full Figma design kit",
-            "Extended form components with validation",
-            "Chart components with Recharts integration",
-            "Ready-to-use dashboard layouts",
-        ],
-        image:
-            "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/featured-06.png",
-        technologies: ["nextjs", "react", "typescript", "tailwind", "shadcn", "figma", "vercel"],
-        button: {
-            url: "https://ruixenui.com/pro",
-            text: "View Ruixen UI Pro",
-        },
-    },
+            "/buggedirl.png",
+        technologies: ["nextjs", "huggingface", "image"],
+        projectUrl: "https://bugged-irl.vercel.app",
+        githubUrl: "https://github.com/riteshdavv/buggedirl",
+    }
 ];
 
 // Technology badge component
@@ -155,19 +159,22 @@ function TechBadge({ techKey }: { techKey: string }) {
 }
 
 // Content panel component for the active entry
-function ContentPanel({ entry }: { entry: TimeLine_01Entry }) {
+function ContentPanel({ entry }: { entry: ProjectEntry }) {
+    const Icon = entry.icon;
     return (
         <div className="space-y-6">
             {/* Header */}
             <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                    <div className="h-0.5 w-6 bg-pink-500 rounded-full" />
-                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+                    <span className="flex items-center justify-center rounded-lg border-2 border-[#bd925d] p-[6px]">
+                        <Icon size={28} color="#bd925d" />
+                    </span>
+                    <h2 className={cn("text-3xl md:text-5xl font-bold tracking-tight text-[#ffcfa5]", instrument.className)}>
                         {entry.title}
                     </h2>
                 </div>
 
-                <p className="text-xs font-medium text-pink-500 uppercase tracking-wider">
+                <p className="text-xs font-medium text-[#bd925d] uppercase tracking-wider">
                     {entry.subtitle}
                 </p>
 
@@ -187,8 +194,10 @@ function ContentPanel({ entry }: { entry: TimeLine_01Entry }) {
                             transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
                             className="flex items-start gap-2 text-sm text-muted-foreground/90"
                         >
-                            <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-pink-500/10 text-pink-500">
-                                <span className="h-1 w-1 rounded-full bg-current" />
+                            <span className="mt-[2.5px] flex h-4 w-4 shrink-0 items-center justify-center text-[#ffcfa5]">
+                                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                                </svg>
                             </span>
                             <span>{item}</span>
                         </motion.li>
@@ -202,7 +211,7 @@ function ContentPanel({ entry }: { entry: TimeLine_01Entry }) {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
-                    className="flex flex-wrap gap-2 pt-2"
+                    className="flex flex-wrap gap-2"
                 >
                     {entry.technologies.map((techKey, i) => (
                         <TechBadge key={i} techKey={techKey} />
@@ -210,62 +219,82 @@ function ContentPanel({ entry }: { entry: TimeLine_01Entry }) {
                 </motion.div>
             )}
 
-            {/* Action Button */}
-            {entry.button && (
-                <div className="pt-2">
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap justify-center gap-1 md:justify-start md:gap-3">
+                {entry.projectUrl && (
+                    <Button asChild size="sm" className="md:h-10 md:px-6 md:has-[>svg]:px-4 md:gap-2">
+                        <Link href={entry.projectUrl} target="_blank">View {entry.title.split(' - ')[0]}</Link>
+                    </Button>
+                )}
+                {entry.githubUrl && (
                     <Button
                         asChild
                         size="sm"
-                        className="rounded-full bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-500/20"
+                        variant="secondary"
+                        className="border border-border bg-transparent md:h-10 md:px-6 md:has-[>svg]:px-4 md:gap-2"
                     >
-                        <a href={entry.button.url} target="_blank" rel="noreferrer">
-                            {entry.button.text}
-                            <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
-                        </a>
+                        <Link href={entry.githubUrl} target="_blank"><Github className="scale-110 dark:text-white" />GitHub Repository</Link>
                     </Button>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 }
 
-export default function TimeLine_01({
+export default function ProjectTimeline({
     title = "Curated Projects",
     description = "The projects I have worked on.",
     entries = defaultEntries,
-}: TimeLine_01Props) {
+}: ProjectProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    // Set up IntersectionObserver to detect which image is in view
+    // Set up a single IntersectionObserver with better threshold detection
     useEffect(() => {
-        const observers: IntersectionObserver[] = [];
+        // Store visibility ratios for each element
+        const visibilityMap = new Map<number, number>();
 
-        imageRefs.current.forEach((ref, index) => {
-            if (!ref) return;
+        const observer = new IntersectionObserver(
+            (observerEntries) => {
+                // Update visibility ratios for each entry
+                observerEntries.forEach((entry) => {
+                    const index = imageRefs.current.findIndex((ref) => ref === entry.target);
+                    if (index !== -1) {
+                        visibilityMap.set(index, entry.intersectionRatio);
+                    }
+                });
 
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        // When an image section is intersecting the viewport center area
-                        if (entry.isIntersecting) {
-                            setActiveIndex(index);
-                        }
-                    });
-                },
-                {
-                    // Trigger when the element is near the center of the viewport
-                    rootMargin: "-40% 0px -40% 0px",
-                    threshold: 0,
+                // Find the most visible element
+                let maxRatio = 0;
+                let mostVisibleIndex = 0;
+
+                visibilityMap.forEach((ratio, index) => {
+                    if (ratio > maxRatio) {
+                        maxRatio = ratio;
+                        mostVisibleIndex = index;
+                    }
+                });
+
+                // Only update if we have a clearly visible element
+                if (maxRatio > 0.1) {
+                    setActiveIndex(mostVisibleIndex);
                 }
-            );
+            },
+            {
+                // Use multiple thresholds for smoother detection
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                // Observe the center portion of the viewport
+                rootMargin: "-20% 0px -20% 0px",
+            }
+        );
 
-            observer.observe(ref);
-            observers.push(observer);
+        // Observe all image refs
+        imageRefs.current.forEach((ref) => {
+            if (ref) observer.observe(ref);
         });
 
         return () => {
-            observers.forEach((observer) => observer.disconnect());
+            observer.disconnect();
         };
     }, [entries.length]);
 
@@ -273,39 +302,42 @@ export default function TimeLine_01({
         <section className="py-20 md:py-32">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Header */}
-                <div className="mx-auto max-w-3xl text-center mb-20 md:mb-32">
-                    <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">
-                        {title}
-                    </h1>
+                <div className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
                     <p className="mb-6 text-base text-muted-foreground md:text-lg">
                         {description}
                     </p>
+                    <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">
+                        {title}
+                    </h1>
                 </div>
 
                 {/* Two-column layout */}
-                <div className="flex flex-col mx-20 md:flex-row gap-12 md:gap-24">
+                <div className="flex flex-col mx-6 md:grid md:grid-cols-7 gap-8 md:gap-14">
                     {/* Left Column - Images (Scrollable) */}
-                    <div className="w-full md:w-1/2 flex-shrink-0">
+                    <div className="hidden md:flex flex-col w-full md:col-span-4">
                         {entries.map((entry, index) => (
                             <div
                                 key={index}
                                 ref={(el) => {
                                     imageRefs.current[index] = el;
                                 }}
-                                className="min-h-screen flex items-center py-12"
+                                className="min-h-[70vh] flex items-center py-12"
                             >
                                 <div
-                                    className={`relative w-full overflow-hidden transition-all duration-500 h-screen bg-amber-200 ${activeIndex === index
+                                    className={`relative w-full overflow-hidden rounded-xl h-[70vh] bg-amber-200 will-change-[transform,opacity] ${activeIndex === index
                                         ? "opacity-100 scale-100"
                                         : "opacity-40 scale-95"
-                                    }`}
+                                        }`}
+                                    style={{
+                                        transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out',
+                                    }}
                                 >
                                     {entry.image && (
-                                        <div className="relative w-full overflow-hidden rounded-xl shadow-lg border border-white/20 bg-background/5">
+                                        <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl shadow-lg border border-white/20 bg-background/5">
                                             <img
                                                 src={entry.image}
                                                 alt={`${entry.title} visual`}
-                                                className="w-full object-cover"
+                                                className="w-full h-full object-cover"
                                                 loading="lazy"
                                             />
                                         </div>
@@ -316,15 +348,18 @@ export default function TimeLine_01({
                     </div>
 
                     {/* Right Column - Content (Sticky) */}
-                    <div className="hidden md:flex w-1/2 sticky -translate-y-10 top-0 h-screen items-center">
+                    <div className="hidden md:flex md:col-span-3 sticky top-24 h-[calc(100vh-8rem)] items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -30 }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="w-full"
+                                exit={{ opacity: 0, y: -15 }}
+                                transition={{
+                                    duration: 0.3,
+                                    ease: [0.16, 1, 0.3, 1],
+                                }}
+                                className="w-full will-change-[transform,opacity]"
                             >
                                 <ContentPanel entry={entries[activeIndex]} />
                             </motion.div>

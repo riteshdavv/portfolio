@@ -93,7 +93,7 @@ export function FeatureShowcase({
 
     return (
         <section className={cn("w-full text-foreground", className)}>
-            <div className="container mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-12 md:py-20 lg:gap-14 ">
+            <div className="container mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-2 md:grid-cols-12 md:py-6 lg:gap-14 ">
                 {/* Left column */}
                 <div className="md:col-span-6">
                     <Button variant="outline" size="icon" className="w-max px-3 mb-6">
@@ -164,15 +164,15 @@ export function FeatureShowcase({
                         </Accordion>
 
                         {/* CTAs */}
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <Button asChild size="lg">
+                        <div className="mt-8 flex flex-wrap justify-center gap-1 md:justify-start md:gap-3">
+                            <Button asChild size="sm" className="md:h-10 md:px-6 md:has-[>svg]:px-4 md:gap-2">
                                 <Link href="https://gist.github.com/riteshdavv/a4530c8e44162db6a3e3ac64ab8c3b25" target="_blank">View Project Report</Link>
                             </Button>
                             <Button
                                 asChild
-                                size="lg"
+                                size="sm"
                                 variant="secondary"
-                                className="border border-border bg-transparent"
+                                className="border border-border bg-transparent md:h-10 md:px-6 md:has-[>svg]:px-4 md:gap-2"
                             >
                                 <Link href="https://github.com/riteshdavv/drupal-appwrite" target="_blank"><Github className="scale-110 dark:text-white" />GitHub Repository</Link>
                             </Button>
@@ -180,11 +180,11 @@ export function FeatureShowcase({
                     </div>
                 </div>
 
-                {/* Right column (unchanged) */}
+                {/* Right column */}
                 <div className="md:col-span-6">
                     <Card
-                        className="relative overflow-hidden rounded-2xl border border-border bg-card/40 p-0 shadow-sm h-full"
-                        style={{}}
+                        className="relative overflow-hidden rounded-2xl border border-border bg-card/40 p-0 shadow-sm h-[10rem] md:h-full md:min-h-[var(--panel-min-height)]"
+                        style={{ "--panel-min-height": `${panelMinHeight}px` } as React.CSSProperties}
                     >
                         <Tabs defaultValue={initial} className="relative h-full w-full">
                             {/* Absolute-fill media container */}
@@ -201,7 +201,7 @@ export function FeatureShowcase({
                                         <img
                                             src={t.src}
                                             alt={t.alt ?? t.label}
-                                            className="object-cover"
+                                            className="object-cover scale-50 md:scale-100"
                                             loading={idx === 0 ? "eager" : "lazy"}
                                         />
                                     </TabsContent>
@@ -215,7 +215,7 @@ export function FeatureShowcase({
                                         <TabsTrigger
                                             key={t.value}
                                             value={t.value}
-                                            className="rounded-lg px-4 py-2 data-[state=active]:bg-foreground data-[state=active]:text-background"
+                                            className="rounded-lg px-2 md:px-4 py-1 md:py-2 data-[state=active]:bg-foreground data-[state=active]:text-background"
                                         >
                                             {t.label}
                                         </TabsTrigger>
