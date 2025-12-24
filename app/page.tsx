@@ -11,7 +11,7 @@ import ProjectSection from "./components/project-section";
 import { Timeline } from "./components/projects";
 import Hero from "./components/Hero";
 import GSoCSection from "./components/GSoCSection";
-import TimeLine_01 from "@/components/ui/projects-timeline";
+import ProjectTimeline from "@/components/ui/projects-timeline";
 
 export default function Page() {
   return (
@@ -27,13 +27,8 @@ export default function Page() {
           <GSoCSection />
         </section>
 
-        <section id="projects" className="py-8 md:py-16 lg:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-              Projects
-            </h2>
-            <ProjectSection />
-          </div>
+        <section>
+          <ProjectTimeline />
         </section>
 
         <section className="py-12 md:py-24 lg:py-32">

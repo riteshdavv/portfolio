@@ -15,15 +15,15 @@ export default function Page() {
         },
         {
             value: "storage",
-            label: "File Storage",
+            label: "Storage",
             src: "storage.png",
-            alt: "File Storage",
+            alt: "Storage",
         },
         {
             value: "database",
-            label: "Database APIs",
+            label: "Database",
             src: "database.png",
-            alt: "Database APIs",
+            alt: "Database",
         },
     ];
 

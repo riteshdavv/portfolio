@@ -28,9 +28,9 @@ export default function TechStack() {
           <div className="flex flex-wrap gap-2">
             {tech.skills.map((skill) => (
               <span
-                key={skill} 
+                key={skill}
                 className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-gray-500/10"
-                >
+              >
                 {skill}
               </span>
             ))}
