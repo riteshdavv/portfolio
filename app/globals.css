@@ -3,16 +3,19 @@
 @tailwind utilities;
 
 @layer components {
+
   /* Define the class used in your component */
   .gradient-button {
-    background: linear-gradient(90deg, #00f2ff 0%, #ec4899 100%); /* Neon Blue to Pink */
+    background: linear-gradient(90deg, #00f2ff 0%, #ec4899 100%);
+    /* Neon Blue to Pink */
     box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .gradient-button:hover {
-    box-shadow: 0 0 25px rgba(236, 72, 153, 0.5); /* Pink glow on hover */
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+    /* Pink glow on hover */
     transform: translateY(-1px);
     opacity: 0.95;
   }

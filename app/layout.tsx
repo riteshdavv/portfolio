@@ -13,8 +13,8 @@ const poppins = Poppins({
   variable: '--font-poppins',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
-const instrument = Instrument_Serif({ 
-  subsets: ['latin'], 
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
   variable: '--font-instrument-serif',
   weight: ['400']
 })
@@ -39,6 +39,12 @@ export default function RootLayout({
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+          rel="stylesheet"
         />
       </head>
       <body
