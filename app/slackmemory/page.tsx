@@ -591,7 +591,7 @@ export default function SlackMemoryPage() {
                     transition={{ duration: 0.6 }}
                 >
                     <p className="text-sm" style={{ color: "#AAAAAA" }}>
-                        © 2023 Slack Memory. Not affiliated with Slack.
+                        © 2026 Slack Memory. Not affiliated with Slack.
                     </p>
                 </motion.footer>
             </main>
