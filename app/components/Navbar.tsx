@@ -6,6 +6,13 @@ import { motion } from "framer-motion"
 import { Menu, X, FileText, Home, User, Briefcase, Mail } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Instrument_Serif } from "next/font/google";
+
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+  weight: ['400']
+})
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -39,7 +46,7 @@ export default function Navbar() {
             className="flex items-center space-x-2 z-50"
             onClick={() => setActiveTab("Home")}
           >
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">
+            <span className={cn("text-[28px] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground", instrument.className)}>
               Ritesh
             </span>
           </Link>
