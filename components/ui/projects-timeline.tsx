@@ -82,6 +82,7 @@ export type ProjectEntry = {
     items?: string[];
     image?: string;
     video?: string;
+    videoPoster?: string;
     technologies?: string[]; // Array of technology keys
     projectUrl?: string;
     githubUrl?: string;
@@ -108,6 +109,7 @@ export const defaultEntries: ProjectEntry[] = [
             "Local-first IndexedDB architecture with <100ms search latency and offline access",
         ],
         video: "/slackmemory-demo.mp4",
+        videoPoster: "/slackmemory-poster.jpg",
         technologies: ["chrome", "react", "typescript", "indexeddb", "slack_oauth", "tailwind"],
         projectUrl: "https://riteshsingh.vercel.app/slackmemory",
         githubUrl: "https://github.com/riteshdavv/slackmemory",
@@ -356,7 +358,7 @@ export default function ProjectTimeline({
                                 >
                                     {entry.video ? (
                                         <div className="w-full overflow-hidden rounded-xl shadow-lg border border-white/20">
-                                            <VideoPlayer src={entry.video} />
+                                            <VideoPlayer src={entry.video} poster={entry.videoPoster} />
                                         </div>
                                     ) : entry.image ? (
                                         <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl shadow-lg border border-white/20 bg-background/5">
@@ -400,7 +402,7 @@ export default function ProjectTimeline({
                             <div className="relative w-full overflow-hidden">
                                 {entry.video ? (
                                     <div className="relative w-full overflow-hidden rounded-lg shadow-lg border border-white/20 bg-background/5">
-                                        <VideoPlayer src={entry.video} />
+                                        <VideoPlayer src={entry.video} poster={entry.videoPoster} />
                                     </div>
                                 ) : entry.image ? (
                                     <div className="relative w-full overflow-hidden rounded-lg shadow-lg border border-white/20 bg-background/5">
