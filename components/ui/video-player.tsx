@@ -45,7 +45,7 @@ const CustomSlider = ({
     );
 };
 
-const VideoPlayer = ({ src }: { src: string }) => {
+const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasStarted, setHasStarted] = useState(false);
@@ -56,8 +56,10 @@ const VideoPlayer = ({ src }: { src: string }) => {
     const [showControls, setShowControls] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [posterUrl, setPosterUrl] = useState<string | null>(poster || null);
 
-    // Seek to 14s on load so the video element displays that frame as thumbnail
+    // Seek to 20s on load so the video element displays that frame as thumbnail
+    // Also capture the frame as a data URL for the overlay (works on desktop)
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
@@ -67,13 +69,37 @@ const VideoPlayer = ({ src }: { src: string }) => {
             video.currentTime = 20;
         };
 
+        const handleSeeked = () => {
+            // Capture the frame as a poster for the overlay
+            if (!poster) {
+                try {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    const ctx = canvas.getContext("2d");
+                    if (ctx && video.videoWidth > 0) {
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        setPosterUrl(canvas.toDataURL("image/jpeg", 0.85));
+                    }
+                } catch (e) {
+                    // Canvas capture may fail due to CORS, ignore
+                }
+            }
+            video.removeEventListener("seeked", handleSeeked);
+        };
+
+        video.addEventListener("seeked", handleSeeked);
+
         if (video.readyState >= 1) {
             handleLoaded();
         } else {
             video.addEventListener("loadedmetadata", handleLoaded);
-            return () => video.removeEventListener("loadedmetadata", handleLoaded);
+            return () => {
+                video.removeEventListener("loadedmetadata", handleLoaded);
+                video.removeEventListener("seeked", handleSeeked);
+            };
         }
-    }, []);
+    }, [poster]);
 
     const handleFirstPlay = () => {
         if (videoRef.current) {
@@ -173,6 +199,7 @@ const VideoPlayer = ({ src }: { src: string }) => {
                 onTimeUpdate={handleTimeUpdate}
                 src={src}
                 preload="auto"
+                playsInline
                 onClick={togglePlay}
             />
 
@@ -186,6 +213,15 @@ const VideoPlayer = ({ src }: { src: string }) => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
                     >
+                        {/* Poster image for mobile fallback */}
+                        {posterUrl && (
+                            <img
+                                src={posterUrl}
+                                alt="Video thumbnail"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                        )}
+
                         {/* Dark overlay for contrast */}
                         <div className="absolute inset-0 bg-black/20" />
 
