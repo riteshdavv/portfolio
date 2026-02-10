@@ -199,7 +199,6 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
                 onTimeUpdate={handleTimeUpdate}
                 src={src}
                 preload="auto"
-                playsInline
                 onClick={togglePlay}
             />
 
@@ -316,7 +315,7 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-2">
+                            <div className="hidden md:flex items-center gap-2">
                                 {[0.5, 1, 1.5, 2].map((speed) => (
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
