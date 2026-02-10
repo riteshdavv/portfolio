@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Package, Calendar, Zap, Github, Brain, Image } from "lucide-react";
+import { ArrowUpRight, Package, Volleyball, Zap, Github, Brain, Image, Database, KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import VideoPlayer from "@/components/ui/video-player";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Instrument_Serif } from "next/font/google";
@@ -35,7 +36,8 @@ import { TbApi } from "react-icons/tb";
 const instrument = Instrument_Serif({
     subsets: ['latin'],
     variable: '--font-instrument-serif',
-    weight: ['400']
+    weight: ['400'],
+    style: ['normal', 'italic']
 })
 
 // Technology type definition
@@ -68,6 +70,8 @@ const TECHNOLOGIES: Record<string, Technology> = {
     shadcn: { name: "SHADCN/UI", icon: SiShadcnui },
     huggingface: { name: "HUGGINGFACE", icon: SiHuggingface },
     image: { name: "IMGFLIP - MEME GENERATION API", icon: Image },
+    indexeddb: { name: "INDEXEDDB (DEXIE.JS)", icon: Database },
+    slack_oauth: { name: "SLACK OAUTH 2.0", icon: KeyRound },
 };
 
 export type ProjectEntry = {
@@ -77,6 +81,7 @@ export type ProjectEntry = {
     description: string;
     items?: string[];
     image?: string;
+    video?: string;
     technologies?: string[]; // Array of technology keys
     projectUrl?: string;
     githubUrl?: string;
@@ -92,6 +97,23 @@ export interface ProjectProps {
 export const defaultEntries: ProjectEntry[] = [
     {
         icon: Package,
+        title: "Slack Memory - Chrome Extension",
+        subtitle: "Completed • Feb 2026",
+        description:
+            "A Manifest V3 Chrome extension that enables instant search and offline access across Slack workspace files, with OAuth authentication and local-first data architecture.",
+        items: [
+            "Reduced file search time by 95% with Manifest V3 Chrome extension",
+            "OAuth 2.0 + chrome.identity for concurrent multi-workspace authentication",
+            "Async file sync via Slack REST API with batched requests, syncing 500+ files in <60s",
+            "Local-first IndexedDB architecture with <100ms search latency and offline access",
+        ],
+        video: "/slackmemory-demo.mp4",
+        technologies: ["chrome", "react", "typescript", "indexeddb", "slack_oauth", "tailwind"],
+        projectUrl: "https://riteshsingh.vercel.app/slackmemory",
+        githubUrl: "https://github.com/riteshdavv/slackmemory",
+    },
+    {
+        icon: Volleyball,
         title: "Elysium - AI Reality Time Logger",
         subtitle: "Work In Progress • Dec 2025",
         description:
@@ -169,7 +191,7 @@ function ContentPanel({ entry }: { entry: ProjectEntry }) {
                     <span className="flex items-center justify-center rounded-lg border-2 border-[#bd925d] p-[6px]">
                         <Icon size={28} color="#bd925d" />
                     </span>
-                    <h2 className={cn("text-3xl md:text-5xl font-bold tracking-tight text-[#ffcfa5]", instrument.className)}>
+                    <h2 className={cn("text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#ffcfa5]", instrument.className)}>
                         {entry.title}
                     </h2>
                 </div>
@@ -242,8 +264,8 @@ function ContentPanel({ entry }: { entry: ProjectEntry }) {
 }
 
 export default function ProjectTimeline({
-    title = "Curated Projects",
-    description = "The projects I have worked on.",
+    title = "Curated Projects.",
+    description = "Featured Applications",
     entries = defaultEntries,
 }: ProjectProps) {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -302,17 +324,17 @@ export default function ProjectTimeline({
         <section className="py-20 md:py-32">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Header */}
-                <div className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
-                    <p className="mb-6 text-base text-muted-foreground md:text-lg">
+                <div className="mx-auto max-w-3xl text-center mb-8 md:mb-12">
+                    <p className="mb-2 font-medium tracking-widest text-xs text-muted-foreground uppercase">
                         {description}
                     </p>
-                    <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">
+                    <h1 className={cn("mb-4 text-5xl font-bold tracking-tight md:text-6xl italic", instrument.className)}>
                         {title}
                     </h1>
                 </div>
 
                 {/* Two-column layout */}
-                <div className="flex flex-col mx-6 md:grid md:grid-cols-7 gap-8 md:gap-14">
+                <div className="flex flex-col lg:mx-6 md:grid md:grid-cols-7 gap-8 md:gap-7 lg:gap-14">
                     {/* Left Column - Images (Scrollable) */}
                     <div className="hidden md:flex flex-col w-full md:col-span-4">
                         {entries.map((entry, index) => (
@@ -321,10 +343,10 @@ export default function ProjectTimeline({
                                 ref={(el) => {
                                     imageRefs.current[index] = el;
                                 }}
-                                className="min-h-[70vh] flex items-center py-12"
+                                className="min-h-[85vh] flex items-start py-12"
                             >
                                 <div
-                                    className={`relative w-full overflow-hidden rounded-xl h-[70vh] bg-amber-200 will-change-[transform,opacity] ${activeIndex === index
+                                    className={`relative w-full overflow-hidden rounded-xl ${entry.video ? "h-auto" : "h-[70vh] bg-amber-200"} will-change-[transform,opacity] ${activeIndex === index
                                         ? "opacity-100 scale-100"
                                         : "opacity-40 scale-95"
                                         }`}
@@ -332,7 +354,11 @@ export default function ProjectTimeline({
                                         transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out',
                                     }}
                                 >
-                                    {entry.image && (
+                                    {entry.video ? (
+                                        <div className="w-full overflow-hidden rounded-xl shadow-lg border border-white/20">
+                                            <VideoPlayer src={entry.video} />
+                                        </div>
+                                    ) : entry.image ? (
                                         <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl shadow-lg border border-white/20 bg-background/5">
                                             <img
                                                 src={entry.image}
@@ -341,7 +367,7 @@ export default function ProjectTimeline({
                                                 loading="lazy"
                                             />
                                         </div>
-                                    )}
+                                    ) : null}
                                 </div>
                             </div>
                         ))}
@@ -371,9 +397,13 @@ export default function ProjectTimeline({
                 <div className="md:hidden space-y-16 mt-8">
                     {entries.map((entry, index) => (
                         <div key={index} className="space-y-8">
-                            <div className="relative w-full overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-gray-500 to-gray-600 p-6 shadow-2xl">
-                                {entry.image && (
-                                    <div className="relative w-full overflow-hidden rounded-xl shadow-lg border border-white/20 bg-background/5">
+                            <div className="relative w-full overflow-hidden">
+                                {entry.video ? (
+                                    <div className="relative w-full overflow-hidden rounded-lg shadow-lg border border-white/20 bg-background/5">
+                                        <VideoPlayer src={entry.video} />
+                                    </div>
+                                ) : entry.image ? (
+                                    <div className="relative w-full overflow-hidden rounded-lg shadow-lg border border-white/20 bg-background/5">
                                         <img
                                             src={entry.image}
                                             alt={`${entry.title} visual`}
@@ -381,7 +411,7 @@ export default function ProjectTimeline({
                                             loading="lazy"
                                         />
                                     </div>
-                                )}
+                                ) : null}
                             </div>
                             <ContentPanel entry={entry} />
                         </div>
